@@ -1,0 +1,22 @@
+{
+  "name": "website",
+  "version": "1.0.0",
+  "description": "Website of Mother on the Pea",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+ssh://git@bitbucket.org/motheronthepea/website.git"
+  },
+  "author": "Thierry de Pauw",
+  "license": "UNLICENSED",
+  "homepage": "https://bitbucket.org/motheronthepea/website#readme",
+  "scripts": {
+    "start": "http-server -c-1"
+  },
+  "devDependencies": {
+    "http-server": "^0.12.1"
+  }
+}
