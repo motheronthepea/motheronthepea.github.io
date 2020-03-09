@@ -1,0 +1,125 @@
+div#about{
+    div#about-image{
+        float:left;
+        width:100%;
+        position:relative;
+        overflow:hidden;
+
+        margin-top:10px;
+        margin-bottom:20px;
+
+        img{
+            position:absolute;
+            right:0;
+            top:0;
+            width:100%;
+            height:auto;
+        }
+    }
+
+    div#about footer{
+        margin-top:140px;
+    }
+
+    section#education{
+        margin-bottom: 70px;
+
+        @media screen and (max-width: 767px){
+            margin-top:50px;
+            margin-bottom:100px;
+        }
+
+        div#education-wrapper{
+            position:relative;
+            float:left;
+            width:100%;
+
+            div#education-timeline{
+                width:responsiveWidth(55,660);
+                margin-left:-5px;
+                position:absolute;
+                left:0;
+                top:0;
+                height:100%;
+                background-image:url(/images/education/background.png);
+                background-repeat: repeat-y;
+                background-position:center;
+
+                img{
+                    position:absolute;
+                    left:0;
+                    width:100%;
+                    height:7px;
+
+                    &#timeline-fade-top{
+                        top:0;
+                    }
+
+                    &#timeline-fade-bottom{
+                        bottom:0;
+                    }
+                }
+            }
+
+            div#education-description{
+                float:left;
+                width:responsiveWidth(540,660);
+                margin-left:responsiveWidth(80,660);
+                margin-bottom:35px;
+
+                article{
+                    float:left;
+                    width:100%;
+                    position:relative;
+                    margin-top:20px;
+
+                    img{
+                        position:absolute;
+                        left:responsiveWidth(-83,660);
+                        width:responsiveWidth(25,660);
+                        top:15px;
+
+                        @media screen and (max-width: 1024px) and (min-width: 768px){
+                            left:responsiveWidth(-88,660);
+                            width:responsiveWidth(35,660);
+                        }
+
+                        @media screen and (max-width: 767px) and (min-width: 480px){
+                            left:responsiveWidth(-88,660);
+                            width:responsiveWidth(35,660);
+                        }
+
+                        @media screen and (max-width: 479px){
+                            left:responsiveWidth(-98,660);
+                            width:responsiveWidth(50,660);
+                        }
+                    }
+
+                    h3{
+                        color:#3e8950;
+                        font-size:em(25);
+                        margin:0;
+                        font-weight: 400;
+
+                        @media screen and (max-width: 767px){
+                            font-size:em(20);
+                        }
+                    }
+
+                    p{
+                        margin:0;
+                    }
+
+                    p.extra-education{
+                        margin-top:10px;
+                    }
+                }
+            }
+        }
+
+
+    }
+
+
+}
+

@@ -1,0 +1,18 @@
+@media screen and (max-width: 767px) and (min-width: 480px){
+  /* debug */
+  #desktop{
+    display:none;
+  }
+
+  #tablet{
+    display:none;
+  }
+
+  #smalltablet{
+    display:block;
+  }
+
+  #smartphone{
+    display:none;
+  }
+}

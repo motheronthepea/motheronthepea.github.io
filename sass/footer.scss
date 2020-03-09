@@ -1,0 +1,50 @@
+footer{
+    width:responsiveWidth(1120,1400);
+    margin:0 auto;
+    max-width:1120px;
+
+    @media screen and (max-width: 1024px){
+        width:85%;
+    }
+
+    p{
+        width:responsiveWidth(310,960);
+        float:left;
+        font-size:em(17);
+        line-height:2em;
+
+        &#footer-mail{
+            text-align:center;
+        }
+
+        &#footer-phone{
+            text-align:right;
+            float:right;
+        }
+
+        a{
+            color:#c5871d;
+            text-decoration:none;
+        }
+
+        small{
+            color:#666665;
+        }
+
+        @media screen and (max-width: 1024px) and (min-width: 768px){
+            font-size:em(14);
+        }
+
+        @media screen and (max-width: 767px){
+            width:100%;
+            text-align:left!important;
+            line-height:1.5em;
+            margin:0 0 5px 0;
+            font-size:em(14);
+
+            &#footer-mail{
+                margin-bottom:20px;
+            }
+        }
+    }
+}

@@ -1,0 +1,24 @@
+div#content{
+    width:responsiveWidth(960,1440);
+    max-width:960px;
+    margin:0 auto;
+
+    @media screen and (max-width: 1024px) and (min-width: 768px){
+        width:85%;
+    }
+
+    @media screen and (max-width: 767px){
+        width:85%;
+    }
+}
+
+.small-content{
+    width:responsiveWidth(665,960);
+    margin:0 responsiveWidth(152.5,960);
+    float:left;
+
+    @media screen and (max-width: 767px){
+        width:100%;
+        margin:0;
+    }
+}

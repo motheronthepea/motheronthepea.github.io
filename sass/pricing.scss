@@ -1,0 +1,110 @@
+#pricing div#content{
+    margin-top:100px;
+
+    h2{
+        width:100%;
+        text-align:center;
+
+        @media screen and (max-width: 767px){
+            text-align:left;
+        }
+    }
+
+    img#pricing-lines-top{
+        width:responsiveWidth(460,960);
+        margin:-40px responsiveWidth(250,960) 0 responsiveWidth(250,960);
+
+        @media screen and (max-width: 767px){
+            display:none;
+        }
+    }
+
+    img#pricing-lines-bottom{
+        width:responsiveWidth(460,960);
+        margin:0 responsiveWidth(250,960) 0 responsiveWidth(250,960);
+
+        @media screen and (max-width: 767px){
+            display:none;
+        }
+    }
+
+    article{
+        width:responsiveWidth(330,960);
+        text-align:center;
+        margin-bottom:20px;
+
+        h3{
+            display:none;
+
+            @media screen and (max-width: 767px){
+                display:inline-block;
+                margin-bottom:0;
+            }
+        }
+
+        p{
+            text-align:left;
+            float:left;
+            width:100%;
+        }
+
+        div{
+            background-image:url(/images/pricing/circle.png);
+            background-size:100%,100%;
+            width:responsiveWidth(180,330);
+            margin:0 auto;
+
+            p{
+                margin-top:0;
+                text-align: center;
+                font-family: 'Slabo 13px', serif;
+                font-size:em(60);
+                letter-spacing: letterSpacing(-100);
+                font-weight: bold;
+                color:#8db6b8;
+
+                @media screen and (max-width: 1024px) and (min-width: 768px){
+                    font-size:em(45);
+                }
+            }
+
+            canvas{
+                width:responsiveWidth(180,330);
+                background-image:url(/images/pricing/circle.png);
+                background-size:100%,100%;
+                margin-bottom:10px;
+            }
+
+            @media screen and (max-width: 767px){
+                display:none;
+            }
+        }
+
+        &#pricing-practice{
+            float:left;
+        }
+
+        &#pricing-home{
+            float:right;
+        }
+
+        @media screen and (max-width: 767px){
+            width:100%;
+            text-align:left;
+            margin-bottom:0;
+        }
+    }
+
+    section#pricing-types{
+        @media screen and (max-width: 767px){
+            margin-bottom:30px;
+            float:left;
+            width:100%;
+        }
+
+    }
+
+    section#rules{
+        margin-bottom:70px;
+    }
+}

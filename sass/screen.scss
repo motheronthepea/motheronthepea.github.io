@@ -1,0 +1,168 @@
+/* CSS Dreams and Creations */
+*{
+    margin:0;
+    padding:0;
+}
+
+/*-------------------------*/
+/*        VARIABLES        */
+/*-------------------------*/
+$black:#474747;
+$superblack:#252525;
+$purple:#6d5899;
+
+/*---------------------*/
+/*        FONTS        */
+/*---------------------*/
+/*
+font-family: 'Raleway', sans-serif;
+font-family: 'Slabo 13px', serif;
+*/
+
+/*-------------------------*/
+/*        FUNCTIONS        */
+/*-------------------------*/
+@import "mixins";
+
+/*----------------------*/
+/*    GENERAL ELEMENTS  */
+/*----------------------*/
+body,html{
+    background-image:url(/images/background.jpg);
+}
+
+h1{
+    font-family: 'Slabo 13px', serif;
+    font-size:em(55);
+    color: $purple;
+    margin-top:0;
+
+    @media screen and (max-width: 1024px){
+        font-size:em(40);
+    }
+
+    @media screen and (max-width: 767px){
+        font-size:em(30);
+    }
+}
+
+h2{
+    font-family: 'Slabo 13px', serif;
+    font-size:em(45);
+    color: $purple;
+    margin-top:0;
+
+    @media screen and (max-width: 1024px){
+        font-size:em(35);
+    }
+
+    @media screen and (max-width: 767px){
+        font-size:em(25);
+    }
+}
+
+h3{
+    font-family: 'Slabo 13px', serif;
+    color:$black;
+    font-size:em(30);
+
+    span{
+        color:$purple;
+    }
+
+    @media screen and (max-width: 1024px){
+        font-size:em(35);
+    }
+
+    @media screen and (max-width: 767px){
+        font-size:em(25);
+    }
+}
+
+p, ul, ol{
+    font-family: 'Raleway', sans-serif;
+    font-size:em(18);
+    color:$black;
+    line-height:1.7em;
+    font-weight:400;
+
+    @media screen and (max-width: 767px){
+        font-size:em(16);
+    }
+}
+
+ul, ol{
+    margin:0;
+    padding:0;
+}
+
+b{
+    font-weight:700;
+    color:$superblack;
+}
+
+button, a.blocklink{
+    background-image:url(/images/button.jpg);
+    border:none;
+    font-family: 'Raleway', sans-serif;
+    font-size:em(18);
+    color:#FFF;
+    padding:10px 20px;
+    font-weight:400;
+    border-radius: 5px;
+    outline:none;
+    text-decoration:none;
+    display:inline-block;
+}
+
+a, a:hover, a:visited, a:focus{
+    outline:0;
+}
+
+/*----------------------*/
+/*         DEBUG        */
+/*----------------------*/
+@import "debug";
+
+/*----------------------*/
+/*    GENERAL CLASSES   */
+/*----------------------*/
+div.cleaner{
+    width:100%;
+    height:1px;
+    clear:both;
+}
+
+
+/*---------------------*/
+/* CONTAINING ELEMENTS */
+/*---------------------*/
+
+/* --- CONTAINERS --- */
+@import "containers";
+
+/* --- HEADER --- */
+@import "header";
+/* --- MENU --- */
+
+/* --- PAGES --- */
+@import "home";
+@import "pricing";
+@import "about";
+@import "worksteps";
+@import "contact";
+
+/* --- FOOTER --- */
+@import "footer";
+
+/*---------------------*/
+/*    MEDIA QUERIES    */
+/*---------------------*/
+/* --- LARGE TABLET: 1024-768 --- */
+@import "responsive-largetablet";
+
+/* --- SMALL TABLET: 767-480 --- */
+@import "responsive-smalltablet";
+
+/* --- SMARTPHONES: >479 --- */
+@import "responsive-smartphones";

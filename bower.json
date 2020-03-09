@@ -1,0 +1,26 @@
+{
+  "name": "Mother on The Pea",
+  "version": "0.0.0",
+  "authors": [
+    "Stefanie Gevaert <stefanie@dreamsandcreations.be>"
+  ],
+  "description": "",
+  "main": "",
+  "moduleType": [
+    "globals"
+  ],
+  "license": "MIT",
+  "homepage": "",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "modernizr-shiv": "~0.0.2",
+    "jquery": "~2.1.4",
+    "jquery-migrate": "~1.2.1"
+  }
+}

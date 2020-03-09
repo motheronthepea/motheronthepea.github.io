@@ -1,0 +1,49 @@
+#contact{
+    section{
+        margin-top:100px;
+        margin-bottom:30px;
+
+        h1{
+            float:left;
+            width:100%;
+            text-align:center;
+        }
+
+        p{
+            width:33.333333333%;
+            float:left;
+
+            a{
+                color:#c5871d;
+                text-decoration:none;
+            }
+
+            @media screen and (max-width: 1024px) and (min-width: 768px){
+                font-size:em(15);
+
+                &.smaller{
+                    width:25%;
+                }
+            }
+
+            @media screen and (max-width: 767px){
+                width:100%;
+                margin:0 0 10px 0;
+                line-height:1.3em;
+            }
+        }
+
+        div#map{
+            width:100%;
+            height:500px;
+
+            @media screen and (max-width: 767px) and (min-width: 480px){
+                height:300px;
+            }
+
+            @media screen and (max-width: 479px){
+                height:200px;
+            }
+        }
+    }
+}
