@@ -9,15 +9,15 @@ provider "ovh" {
 
 locals {
   be_zone  = "motheronthepea.be"
-  be_zone_ttl = "86400"
+  be_zone_ttl = 86400
 
   com_zone = "motheronthepea.com"
   com_zone_ip = "213.186.33.5"
-  com_zone_ttl = 0
+  com_zone_ttl = 86400
 
   eu_zone = "motheronthepea.eu"
   eu_zone_ip = "213.186.33.5"
-  eu_zone_ttl = 0
+  eu_zone_ttl = 86400
 
   ns_records = [
     "dns101.ovh.net.",
