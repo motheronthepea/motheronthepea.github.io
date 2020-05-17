@@ -9,6 +9,7 @@ provider "ovh" {
 
 locals {
   zone = "motheronthepea.be"
+  host = "${local.zone}."
   ttl  = "86400"
 }
 
@@ -16,5 +17,13 @@ resource "ovh_domain_zone_record" "motheronthepea_be" {
   zone      = local.zone
   fieldtype = "A"
   ttl       = local.ttl
-  target    = var.domain_name_ip
+  target    = var.website_ip
+}
+
+resource "ovh_domain_zone_record" "www_motheronthepea_be" {
+  zone      = local.zone
+  subdomain = "www"
+  fieldtype = "CNAME"
+  ttl       = local.ttl
+  target    = local.host
 }

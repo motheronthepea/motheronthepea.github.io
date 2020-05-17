@@ -1,6 +1,6 @@
 
-variable "domain_name_ip" {
-  description = "Target IP address for the domain name motheronthepea.be"
+variable "website_ip" {
+  description = "IP address for the website motheronthepea.be"
   type        = string
   default     = "185.3.216.250"
 }
