@@ -10,6 +10,10 @@ provider "ovh" {
 locals {
   ttl  = "86400"
   be_zone = "motheronthepea.be"
+  ns_records = [
+    "dns101.ovh.net.",
+    "ns101.ovh.net."
+  ]
   gsuite_mx_records = [
     "1 aspmx.l.google.com.",
     "10 aspmx2.googlemail.com.",
@@ -17,6 +21,14 @@ locals {
     "5 alt2.aspmx.l.google.com.",
     "5 alt1.aspmx.l.google.com."
   ]
+}
+
+resource "ovh_domain_zone_record" "name_server" {
+  count = length(local.ns_records)
+  zone = local.be_zone
+  fieldtype = "NS"
+  ttl = local.ttl
+  target = local.ns_records[count.index]
 }
 
 resource "ovh_domain_zone_record" "motheronthepea_be" {
