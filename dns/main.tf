@@ -8,6 +8,7 @@ provider "ovh" {
 }
 
 locals {
+  # OVH does not accept a TTL lower than 60 !
   ttl     = 86400
   be_zone = "motheronthepea.be"
 
@@ -42,7 +43,7 @@ resource "ovh_domain_zone_record" "be_motheronthepea" {
   count     = length(var.website_ip)
   zone      = local.be_zone
   fieldtype = "A"
-  ttl       = local.ttl
+  ttl       = 60
   target    = var.website_ip[count.index]
 }
 

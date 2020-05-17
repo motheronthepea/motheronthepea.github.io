@@ -2,7 +2,12 @@
 variable "website_ip" {
   description = "IP address for the website motheronthepea.be"
   type        = list(string)
-  default     = ["185.3.216.250"]
+  default = [
+    "185.199.108.153",
+    "185.199.109.153",
+    "185.199.110.153",
+    "185.199.111.153"
+  ]
 }
 
 variable "ovh_application_key" {
