@@ -31,7 +31,7 @@ function plan() {
 
 function apply() {
   echo "applying plan ..."
-  terraform apply -var-file=$HOME/.ovh/motheronthepea.tfvar -input=false tfplan $@
+  terraform apply -input=false tfplan $@
 }
 
 if [[ $# < 1 ]]; then
