@@ -23,7 +23,7 @@ locals {
   ]
 }
 
-resource "ovh_domain_zone_record" "name_server" {
+resource "ovh_domain_zone_record" "be_name_server" {
   count = length(local.ns_records)
   zone = local.be_zone
   fieldtype = "NS"
@@ -31,14 +31,14 @@ resource "ovh_domain_zone_record" "name_server" {
   target = local.ns_records[count.index]
 }
 
-resource "ovh_domain_zone_record" "motheronthepea_be" {
+resource "ovh_domain_zone_record" "be_motheronthepea" {
   zone      = local.be_zone
   fieldtype = "A"
   ttl       = local.ttl
   target    = var.website_ip
 }
 
-resource "ovh_domain_zone_record" "www_motheronthepea_be" {
+resource "ovh_domain_zone_record" "be_motheronthepea_www" {
   zone      = local.be_zone
   subdomain = "www"
   fieldtype = "CNAME"
@@ -46,14 +46,14 @@ resource "ovh_domain_zone_record" "www_motheronthepea_be" {
   target    = "${local.be_zone}."
 }
 
-resource "ovh_domain_zone_record" "gsuite_site_verification" {
+resource "ovh_domain_zone_record" "be_gsuite_site_verification" {
   zone      = local.be_zone
   fieldtype = "TXT"
   ttl       = local.ttl
   target    = "\"google-site-verification=yRsQtTu_Gp0VBi39gdKVOM5-OPibMoVclrwu7z1x-Gk\""
 }
 
-resource "ovh_domain_zone_record" "gsuite" {
+resource "ovh_domain_zone_record" "be_gsuite" {
   count     = length(local.gsuite_mx_records)
   zone      = local.be_zone
   fieldtype = "MX"
