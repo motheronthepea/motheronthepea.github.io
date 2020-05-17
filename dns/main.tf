@@ -8,8 +8,13 @@ provider "ovh" {
 }
 
 locals {
-  ttl  = "86400"
-  be_zone = "motheronthepea.be"
+  be_zone  = "motheronthepea.be"
+  be_zone_ttl = "86400"
+
+  com_zone = "motheronthepea.com"
+  com_zone_ip = "213.186.33.5"
+  com_zone_ttl = 0
+
   ns_records = [
     "dns101.ovh.net.",
     "ns101.ovh.net."
@@ -24,17 +29,17 @@ locals {
 }
 
 resource "ovh_domain_zone_record" "be_name_server" {
-  count = length(local.ns_records)
-  zone = local.be_zone
+  count     = length(local.ns_records)
+  zone      = local.be_zone
   fieldtype = "NS"
-  ttl = local.ttl
-  target = local.ns_records[count.index]
+  ttl       = local.be_zone_ttl
+  target    = local.ns_records[count.index]
 }
 
 resource "ovh_domain_zone_record" "be_motheronthepea" {
   zone      = local.be_zone
   fieldtype = "A"
-  ttl       = local.ttl
+  ttl       = local.be_zone_ttl
   target    = var.website_ip
 }
 
@@ -42,14 +47,14 @@ resource "ovh_domain_zone_record" "be_motheronthepea_www" {
   zone      = local.be_zone
   subdomain = "www"
   fieldtype = "CNAME"
-  ttl       = local.ttl
+  ttl       = local.be_zone_ttl
   target    = "${local.be_zone}."
 }
 
 resource "ovh_domain_zone_record" "be_gsuite_site_verification" {
   zone      = local.be_zone
   fieldtype = "TXT"
-  ttl       = local.ttl
+  ttl       = local.be_zone_ttl
   target    = "\"google-site-verification=yRsQtTu_Gp0VBi39gdKVOM5-OPibMoVclrwu7z1x-Gk\""
 }
 
@@ -57,6 +62,29 @@ resource "ovh_domain_zone_record" "be_gsuite" {
   count     = length(local.gsuite_mx_records)
   zone      = local.be_zone
   fieldtype = "MX"
-  ttl       = local.ttl
+  ttl       = local.be_zone_ttl
   target    = local.gsuite_mx_records[count.index]
+}
+
+resource "ovh_domain_zone_record" "com_name_server" {
+  count     = length(local.ns_records)
+  zone      = local.com_zone
+  fieldtype = "NS"
+  ttl       = local.com_zone_ttl
+  target    = local.ns_records[count.index]
+}
+
+resource "ovh_domain_zone_record" "com_motheronthepea" {
+  zone      = local.com_zone
+  fieldtype = "A"
+  ttl       = local.com_zone_ttl
+  target    = local.com_zone_ip
+}
+
+resource "ovh_domain_zone_record" "com_motheronthepea_www" {
+  zone      = local.com_zone
+  subdomain = "www"
+  fieldtype = "CNAME"
+  ttl       = local.com_zone_ttl
+  target    = "${local.com_zone}."
 }
