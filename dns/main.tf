@@ -15,6 +15,10 @@ locals {
   com_zone_ip = "213.186.33.5"
   com_zone_ttl = 0
 
+  eu_zone = "motheronthepea.eu"
+  eu_zone_ip = "213.186.33.5"
+  eu_zone_ttl = 0
+
   ns_records = [
     "dns101.ovh.net.",
     "ns101.ovh.net."
@@ -91,6 +95,36 @@ resource "ovh_domain_zone_record" "com_motheronthepea_www" {
 
 resource "ovh_domain_zone_redirection" "com_motheronthepea" {
   zone = local.com_zone
+  subdomain = ""
+  type = "visiblePermanent"
+  target = "http://motheronthepea.be"
+}
+
+resource "ovh_domain_zone_record" "eu_name_server" {
+  count     = length(local.ns_records)
+  zone      = local.eu_zone
+  fieldtype = "NS"
+  ttl       = local.eu_zone_ttl
+  target    = local.ns_records[count.index]
+}
+
+resource "ovh_domain_zone_record" "eu_motheronthepea" {
+  zone      = local.eu_zone
+  fieldtype = "A"
+  ttl       = local.eu_zone_ttl
+  target    = local.eu_zone_ip
+}
+
+resource "ovh_domain_zone_record" "eu_motheronthepea_www" {
+  zone      = local.eu_zone
+  subdomain = "www"
+  fieldtype = "CNAME"
+  ttl       = local.eu_zone_ttl
+  target    = "${local.eu_zone}."
+}
+
+resource "ovh_domain_zone_redirection" "eu_motheronthepea" {
+  zone = local.eu_zone
   subdomain = ""
   type = "visiblePermanent"
   target = "http://motheronthepea.be"
