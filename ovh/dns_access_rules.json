@@ -1,0 +1,18 @@
+{
+  "accessRules": [
+    {
+      "path": "/domain/zone/*",
+      "method": "GET"
+    },{
+      "method": "PUT",
+      "path": "/domain/zone/*"
+    },{
+      "path": "/domain/zone/*",
+      "method": "POST"
+    },{
+      "method": "DELETE",
+      "path": "/domain/zone/*"
+    }
+  ],
+  "redirection": "http://motheronthepea.be/"
+}
