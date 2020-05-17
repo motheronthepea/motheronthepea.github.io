@@ -8,22 +8,21 @@ provider "ovh" {
 }
 
 locals {
-  zone = "motheronthepea.be"
-  host = "${local.zone}."
   ttl  = "86400"
+  be_zone = "motheronthepea.be"
 }
 
 resource "ovh_domain_zone_record" "motheronthepea_be" {
-  zone      = local.zone
+  zone      = local.be_zone
   fieldtype = "A"
   ttl       = local.ttl
   target    = var.website_ip
 }
 
 resource "ovh_domain_zone_record" "www_motheronthepea_be" {
-  zone      = local.zone
+  zone      = local.be_zone
   subdomain = "www"
   fieldtype = "CNAME"
   ttl       = local.ttl
-  target    = local.host
+  target    = "${local.be_zone}."
 }
