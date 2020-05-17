@@ -39,10 +39,11 @@ resource "ovh_domain_zone_record" "be_name_server" {
 }
 
 resource "ovh_domain_zone_record" "be_motheronthepea" {
+  count     = length(var.website_ip)
   zone      = local.be_zone
   fieldtype = "A"
   ttl       = local.ttl
-  target    = var.website_ip
+  target    = var.website_ip[count.index]
 }
 
 resource "ovh_domain_zone_record" "be_motheronthepea_www" {
