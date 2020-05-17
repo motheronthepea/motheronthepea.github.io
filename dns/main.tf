@@ -51,8 +51,8 @@ resource "ovh_domain_zone_record" "be_motheronthepea_www" {
   zone      = local.be_zone
   subdomain = "www"
   fieldtype = "CNAME"
-  ttl       = local.ttl
-  target    = "${local.be_zone}."
+  ttl       = 60
+  target    = "motheronthepea.github.io."
 }
 
 resource "ovh_domain_zone_record" "be_gsuite_site_verification" {
