@@ -10,6 +10,13 @@ provider "ovh" {
 locals {
   ttl  = "86400"
   be_zone = "motheronthepea.be"
+  gsuite_mx_records = [
+    "1 aspmx.l.google.com.",
+    "10 aspmx2.googlemail.com.",
+    "10 aspmx3.googlemail.com.",
+    "5 alt2.aspmx.l.google.com.",
+    "5 alt1.aspmx.l.google.com."
+  ]
 }
 
 resource "ovh_domain_zone_record" "motheronthepea_be" {
@@ -25,4 +32,12 @@ resource "ovh_domain_zone_record" "www_motheronthepea_be" {
   fieldtype = "CNAME"
   ttl       = local.ttl
   target    = "${local.be_zone}."
+}
+
+resource "ovh_domain_zone_record" "gsuite" {
+  count     = length(local.gsuite_mx_records)
+  zone      = local.be_zone
+  fieldtype = "MX"
+  ttl       = local.ttl
+  target    = local.gsuite_mx_records[count.index]
 }
