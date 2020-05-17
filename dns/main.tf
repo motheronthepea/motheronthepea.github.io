@@ -8,13 +8,13 @@ provider "ovh" {
 }
 
 locals {
-  ttl = 86400
-  be_zone  = "motheronthepea.be"
+  ttl     = 86400
+  be_zone = "motheronthepea.be"
 
-  com_zone = "motheronthepea.com"
+  com_zone    = "motheronthepea.com"
   com_zone_ip = "213.186.33.5"
 
-  eu_zone = "motheronthepea.eu"
+  eu_zone    = "motheronthepea.eu"
   eu_zone_ip = "213.186.33.5"
 
   ns_records = [
@@ -93,10 +93,10 @@ resource "ovh_domain_zone_record" "com_motheronthepea_www" {
 }
 
 resource "ovh_domain_zone_redirection" "com_motheronthepea" {
-  zone = local.com_zone
+  zone      = local.com_zone
   subdomain = ""
-  type = "visiblePermanent"
-  target = "http://motheronthepea.be"
+  type      = "visiblePermanent"
+  target    = "http://motheronthepea.be"
 }
 
 resource "ovh_domain_zone_record" "eu_name_server" {
@@ -123,8 +123,8 @@ resource "ovh_domain_zone_record" "eu_motheronthepea_www" {
 }
 
 resource "ovh_domain_zone_redirection" "eu_motheronthepea" {
-  zone = local.eu_zone
+  zone      = local.eu_zone
   subdomain = ""
-  type = "visiblePermanent"
-  target = "http://motheronthepea.be"
+  type      = "visiblePermanent"
+  target    = "http://motheronthepea.be"
 }
