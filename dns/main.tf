@@ -34,6 +34,13 @@ resource "ovh_domain_zone_record" "www_motheronthepea_be" {
   target    = "${local.be_zone}."
 }
 
+resource "ovh_domain_zone_record" "gsuite_site_verification" {
+  zone      = local.be_zone
+  fieldtype = "TXT"
+  ttl       = local.ttl
+  target    = "\"google-site-verification=yRsQtTu_Gp0VBi39gdKVOM5-OPibMoVclrwu7z1x-Gk\""
+}
+
 resource "ovh_domain_zone_record" "gsuite" {
   count     = length(local.gsuite_mx_records)
   zone      = local.be_zone
