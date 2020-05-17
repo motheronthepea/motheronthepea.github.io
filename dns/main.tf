@@ -88,3 +88,10 @@ resource "ovh_domain_zone_record" "com_motheronthepea_www" {
   ttl       = local.com_zone_ttl
   target    = "${local.com_zone}."
 }
+
+resource "ovh_domain_zone_redirection" "com_motheronthepea" {
+  zone = local.com_zone
+  subdomain = ""
+  type = "visiblePermanent"
+  target = "http://motheronthepea.be"
+}
