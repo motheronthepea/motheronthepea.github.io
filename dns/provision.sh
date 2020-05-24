@@ -26,7 +26,7 @@ function switch_workspace() {
 
 function plan() {
   echo "creating a plan ..."
-  terraform plan -var-file=$HOME/.ovh/motheronthepea.tfvar -out=tfplan -input=false $@
+  terraform plan -var-file=$HOME/.ovh/ovh.tfvar -out=tfplan -input=false $@
 }
 
 function apply() {
