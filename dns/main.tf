@@ -9,9 +9,10 @@ provider "ovh" {
 
 locals {
   # OVH does not accept a TTL lower than 60 !
-  ttl_mx = 28800
-  ttl_a  = 10800
-  ttl_ns = 86400
+  ttl_mx  = 28800
+  ttl_a   = 10800
+  ttl_ns  = 86400
+  ttl_spf = 3600
 
   be_zone = "motheronthepea.be"
 
@@ -32,6 +33,8 @@ locals {
     "5 alt2.aspmx.l.google.com.",
     "5 alt1.aspmx.l.google.com."
   ]
+
+  spf_record = "\"v=spf1 include:_spf.google.com ~all\""
 }
 
 resource "ovh_domain_zone_record" "be_name_server" {
@@ -63,6 +66,13 @@ resource "ovh_domain_zone_record" "be_gsuite_site_verification" {
   fieldtype = "TXT"
   ttl       = local.ttl_a
   target    = "\"google-site-verification=yRsQtTu_Gp0VBi39gdKVOM5-OPibMoVclrwu7z1x-Gk\""
+}
+
+resource "ovh_domain_zone_record" "be_spf" {
+  zone      = local.be_zone
+  fieldtype = "SPF"
+  ttl       = local.ttl_spf
+  target    = local.spf_record
 }
 
 resource "ovh_domain_zone_record" "be_gsuite" {
