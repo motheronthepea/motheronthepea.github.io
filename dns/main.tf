@@ -9,7 +9,10 @@ provider "ovh" {
 
 locals {
   # OVH does not accept a TTL lower than 60 !
-  ttl     = 86400
+  ttl_mx = 28800
+  ttl_a  = 10800
+  ttl_ns = 86400
+
   be_zone = "motheronthepea.be"
 
   com_zone    = "motheronthepea.com"
@@ -35,7 +38,7 @@ resource "ovh_domain_zone_record" "be_name_server" {
   count     = length(local.ns_records)
   zone      = local.be_zone
   fieldtype = "NS"
-  ttl       = local.ttl
+  ttl       = local.ttl_ns
   target    = local.ns_records[count.index]
 }
 
@@ -43,7 +46,7 @@ resource "ovh_domain_zone_record" "be_motheronthepea" {
   count     = length(var.website_ip)
   zone      = local.be_zone
   fieldtype = "A"
-  ttl       = 60
+  ttl       = local.ttl_a
   target    = var.website_ip[count.index]
 }
 
@@ -51,14 +54,14 @@ resource "ovh_domain_zone_record" "be_motheronthepea_www" {
   zone      = local.be_zone
   subdomain = "www"
   fieldtype = "CNAME"
-  ttl       = 60
+  ttl       = local.ttl_a
   target    = "motheronthepea.github.io."
 }
 
 resource "ovh_domain_zone_record" "be_gsuite_site_verification" {
   zone      = local.be_zone
   fieldtype = "TXT"
-  ttl       = local.ttl
+  ttl       = local.ttl_a
   target    = "\"google-site-verification=yRsQtTu_Gp0VBi39gdKVOM5-OPibMoVclrwu7z1x-Gk\""
 }
 
@@ -66,7 +69,7 @@ resource "ovh_domain_zone_record" "be_gsuite" {
   count     = length(local.gsuite_mx_records)
   zone      = local.be_zone
   fieldtype = "MX"
-  ttl       = local.ttl
+  ttl       = local.ttl_mx
   target    = local.gsuite_mx_records[count.index]
 }
 
@@ -74,14 +77,14 @@ resource "ovh_domain_zone_record" "com_name_server" {
   count     = length(local.ns_records)
   zone      = local.com_zone
   fieldtype = "NS"
-  ttl       = local.ttl
+  ttl       = local.ttl_ns
   target    = local.ns_records[count.index]
 }
 
 resource "ovh_domain_zone_record" "com_motheronthepea" {
   zone      = local.com_zone
   fieldtype = "A"
-  ttl       = local.ttl
+  ttl       = local.ttl_a
   target    = local.com_zone_ip
 }
 
@@ -89,7 +92,7 @@ resource "ovh_domain_zone_record" "com_motheronthepea_www" {
   zone      = local.com_zone
   subdomain = "www"
   fieldtype = "CNAME"
-  ttl       = local.ttl
+  ttl       = local.ttl_a
   target    = "${local.com_zone}."
 }
 
@@ -104,14 +107,14 @@ resource "ovh_domain_zone_record" "eu_name_server" {
   count     = length(local.ns_records)
   zone      = local.eu_zone
   fieldtype = "NS"
-  ttl       = local.ttl
+  ttl       = local.ttl_ns
   target    = local.ns_records[count.index]
 }
 
 resource "ovh_domain_zone_record" "eu_motheronthepea" {
   zone      = local.eu_zone
   fieldtype = "A"
-  ttl       = local.ttl
+  ttl       = local.ttl_a
   target    = local.eu_zone_ip
 }
 
@@ -119,7 +122,7 @@ resource "ovh_domain_zone_record" "eu_motheronthepea_www" {
   zone      = local.eu_zone
   subdomain = "www"
   fieldtype = "CNAME"
-  ttl       = local.ttl
+  ttl       = local.ttl_a
   target    = "${local.eu_zone}."
 }
 
