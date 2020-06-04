@@ -70,7 +70,7 @@ resource "ovh_domain_zone_record" "be_gsuite_site_verification" {
 
 resource "ovh_domain_zone_record" "be_spf" {
   zone      = local.be_zone
-  fieldtype = "SPF"
+  fieldtype = "TXT"
   ttl       = local.ttl_spf
   target    = local.spf_record
 }
