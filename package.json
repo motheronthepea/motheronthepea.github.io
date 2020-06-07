@@ -13,7 +13,7 @@
   },
   "author": "Thierry de Pauw",
   "license": "UNLICENSED",
-  "homepage": "https://bitbucket.org/motheronthepea/website#readme",
+  "homepage": "https://github.com/motheronthepea/motheronthepea.github.io/",
   "devDependencies": {
     "http-server": "^0.12.1"
   }
