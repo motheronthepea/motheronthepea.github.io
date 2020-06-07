@@ -9,7 +9,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+ssh://git@bitbucket.org/motheronthepea/website.git"
+    "url": "git@github.com:motheronthepea/motheronthepea.github.io.git"
   },
   "author": "Thierry de Pauw",
   "license": "UNLICENSED",
