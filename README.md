@@ -16,5 +16,3 @@ Intentionally, [No license](https://choosealicense.com/no-permission/) is
 provided for this repo.
 
 ## TODO
-
-- Add DMARC

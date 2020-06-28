@@ -26,8 +26,9 @@ locals {
     "5 alt1.aspmx.l.google.com."
   ]
 
-  spf  = "\"v=spf1 include:_spf.google.com ~all\""
-  dkim = "v=DKIM1; k=rsa; p=MIGfMA0GCSqGSIb3DQEBAQUAA4GNADCBiQKBgQC1DQ5KWuaqjgm3guSmlKY2uUISnzxHUIi/RZYAE+92yF1Wg7Wkhzh3FpGMBPuJJbHg6brqs+1ebcguE5rx8XcAj5hcWwleLZwhjWZjVALPQM4ok+1crdeW0BAQQbuOBVomitervSIjYzkbPSKZHAanBM/+n9/bp2nzO5fvBNRPewIDAQAB"
+  spf   = "\"v=spf1 include:_spf.google.com ~all\""
+  dkim  = "v=DKIM1; k=rsa; p=MIGfMA0GCSqGSIb3DQEBAQUAA4GNADCBiQKBgQC1DQ5KWuaqjgm3guSmlKY2uUISnzxHUIi/RZYAE+92yF1Wg7Wkhzh3FpGMBPuJJbHg6brqs+1ebcguE5rx8XcAj5hcWwleLZwhjWZjVALPQM4ok+1crdeW0BAQQbuOBVomitervSIjYzkbPSKZHAanBM/+n9/bp2nzO5fvBNRPewIDAQAB"
+  dmarc = "v=DMARC1; p=none; rua=mailto:admin@wayofthinking.be"
 }
 
 module "be" {
@@ -42,9 +43,10 @@ module "be" {
 
   google_site_verification = "yRsQtTu_Gp0VBi39gdKVOM5-OPibMoVclrwu7z1x-Gk"
 
-  mx   = local.gsuite_mx_records
-  spf  = local.spf
-  dkim = local.dkim
+  mx    = local.gsuite_mx_records
+  spf   = local.spf
+  dkim  = local.dkim
+  dmarc = local.dmarc
 }
 
 module "com" {
@@ -59,6 +61,8 @@ module "com" {
   redirections = [
     { subdomain = "", type = "visiblePermanent", target = "http://motheronthepea.be" }
   ]
+
+  dmarc = local.dmarc
 }
 
 module "eu" {
@@ -73,4 +77,6 @@ module "eu" {
   redirections = [
     { subdomain = "", type = "visiblePermanent", target = "http://motheronthepea.be" }
   ]
+
+  dmarc = local.dmarc
 }
