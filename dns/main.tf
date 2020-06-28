@@ -14,15 +14,13 @@ locals {
   ttl_ns  = 86400
   ttl_spf = 3600
 
-  be_zone = "motheronthepea.be"
+  zone_be = "motheronthepea.be"
+  zone_com    = "motheronthepea.com"
+  zone_eu    = "motheronthepea.eu"
 
-  com_zone    = "motheronthepea.com"
-  com_zone_ip = "213.186.33.5"
+  ovh_ip = "213.186.33.5"
 
-  eu_zone    = "motheronthepea.eu"
-  eu_zone_ip = "213.186.33.5"
-
-  ns_records = [
+  name_servers = [
     "dns101.ovh.net.",
     "ns101.ovh.net."
   ]
@@ -34,111 +32,49 @@ locals {
     "5 alt1.aspmx.l.google.com."
   ]
 
-  spf_record = "\"v=spf1 include:_spf.google.com ~all\""
+  spf = "\"v=spf1 include:_spf.google.com ~all\""
 }
 
-resource "ovh_domain_zone_record" "be_name_server" {
-  count     = length(local.ns_records)
-  zone      = local.be_zone
-  fieldtype = "NS"
-  ttl       = local.ttl_ns
-  target    = local.ns_records[count.index]
+module "be" {
+  source = "./modules/zone"
+
+  zone         = local.zone_be
+  name_servers = local.name_servers
+  ipv4         = var.website_ip
+  aliases      = [
+    {subdomain = "www", target = "motheronthepea.github.io."}
+  ]
+
+  google_site_verification = "yRsQtTu_Gp0VBi39gdKVOM5-OPibMoVclrwu7z1x-Gk"
+
+  mx   = local.gsuite_mx_records
+  spf  = local.spf
 }
 
-resource "ovh_domain_zone_record" "be_motheronthepea" {
-  count     = length(var.website_ip)
-  zone      = local.be_zone
-  fieldtype = "A"
-  ttl       = local.ttl_a
-  target    = var.website_ip[count.index]
+module "com" {
+  source = "./modules/zone"
+
+  zone         = local.zone_com
+  name_servers = local.name_servers
+  ipv4         = [local.ovh_ip]
+  aliases      = [
+    {subdomain = "www", target = "${local.zone_com}."}
+  ]
+  redirections = [
+    {subdomain = "", type = "visiblePermanent", target = "http://motheronthepea.be"}
+  ]
 }
 
-resource "ovh_domain_zone_record" "be_motheronthepea_www" {
-  zone      = local.be_zone
-  subdomain = "www"
-  fieldtype = "CNAME"
-  ttl       = local.ttl_a
-  target    = "motheronthepea.github.io."
-}
+module "eu" {
+  source = "./modules/zone"
 
-resource "ovh_domain_zone_record" "be_gsuite_site_verification" {
-  zone      = local.be_zone
-  fieldtype = "TXT"
-  ttl       = local.ttl_a
-  target    = "\"google-site-verification=yRsQtTu_Gp0VBi39gdKVOM5-OPibMoVclrwu7z1x-Gk\""
-}
-
-resource "ovh_domain_zone_record" "be_spf" {
-  zone      = local.be_zone
-  fieldtype = "TXT"
-  ttl       = local.ttl_spf
-  target    = local.spf_record
-}
-
-resource "ovh_domain_zone_record" "be_gsuite" {
-  count     = length(local.gsuite_mx_records)
-  zone      = local.be_zone
-  fieldtype = "MX"
-  ttl       = local.ttl_mx
-  target    = local.gsuite_mx_records[count.index]
-}
-
-resource "ovh_domain_zone_record" "com_name_server" {
-  count     = length(local.ns_records)
-  zone      = local.com_zone
-  fieldtype = "NS"
-  ttl       = local.ttl_ns
-  target    = local.ns_records[count.index]
-}
-
-resource "ovh_domain_zone_record" "com_motheronthepea" {
-  zone      = local.com_zone
-  fieldtype = "A"
-  ttl       = local.ttl_a
-  target    = local.com_zone_ip
-}
-
-resource "ovh_domain_zone_record" "com_motheronthepea_www" {
-  zone      = local.com_zone
-  subdomain = "www"
-  fieldtype = "CNAME"
-  ttl       = local.ttl_a
-  target    = "${local.com_zone}."
-}
-
-resource "ovh_domain_zone_redirection" "com_motheronthepea" {
-  zone      = local.com_zone
-  subdomain = ""
-  type      = "visiblePermanent"
-  target    = "http://motheronthepea.be"
-}
-
-resource "ovh_domain_zone_record" "eu_name_server" {
-  count     = length(local.ns_records)
-  zone      = local.eu_zone
-  fieldtype = "NS"
-  ttl       = local.ttl_ns
-  target    = local.ns_records[count.index]
-}
-
-resource "ovh_domain_zone_record" "eu_motheronthepea" {
-  zone      = local.eu_zone
-  fieldtype = "A"
-  ttl       = local.ttl_a
-  target    = local.eu_zone_ip
-}
-
-resource "ovh_domain_zone_record" "eu_motheronthepea_www" {
-  zone      = local.eu_zone
-  subdomain = "www"
-  fieldtype = "CNAME"
-  ttl       = local.ttl_a
-  target    = "${local.eu_zone}."
-}
-
-resource "ovh_domain_zone_redirection" "eu_motheronthepea" {
-  zone      = local.eu_zone
-  subdomain = ""
-  type      = "visiblePermanent"
-  target    = "http://motheronthepea.be"
+  zone         = local.zone_eu
+  name_servers = local.name_servers
+  ipv4         = [local.ovh_ip]
+  aliases      = [
+    {subdomain = "www", target = "${local.zone_eu}."}
+  ]
+  redirections = [
+    {subdomain = "", type = "visiblePermanent", target = "http://motheronthepea.be"}
+  ]
 }
