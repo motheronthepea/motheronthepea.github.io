@@ -8,12 +8,6 @@ provider "ovh" {
 }
 
 locals {
-  # OVH does not accept a TTL lower than 60 !
-  ttl_mx  = 28800
-  ttl_a   = 10800
-  ttl_ns  = 86400
-  ttl_spf = 3600
-
   zone_be = "motheronthepea.be"
   zone_com    = "motheronthepea.com"
   zone_eu    = "motheronthepea.eu"
