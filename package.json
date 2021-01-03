@@ -5,7 +5,9 @@
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "http-server -c-1"
+    "start": "http-server -c-1",
+    "sass": "node-sass --output-style compressed --source-map true ./sass/screen.scss ./css/screen.css",
+    "sass-watch": "node-sass --watch --output-style compressed --source-map true ./sass/screen.scss ./css/screen.css"
   },
   "repository": {
     "type": "git",
@@ -16,6 +18,7 @@
   "homepage": "https://github.com/motheronthepea/motheronthepea.github.io/",
   "devDependencies": {
     "http-server": "^0.12.3",
-    "lodash": "~4.17.19"
+    "lodash": "~4.17.19",
+    "node-sass": "^5.0.0"
   }
 }

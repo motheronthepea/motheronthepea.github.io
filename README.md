@@ -10,9 +10,19 @@ To start a local web server hosting the website.
 npm start
 ```
 
+## Convert SASS files to CSS
+
+```bash
+npm run sass
+```
+
+To watch for SASS file changes during development:
+
+```bash
+npm run sass-watch
+```
+
 ## License
 
 Intentionally, [No license](https://choosealicense.com/no-permission/) is
 provided for this repo.
-
-## TODO
