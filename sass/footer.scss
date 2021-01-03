@@ -9,12 +9,18 @@ footer{
 
     p{
         width:responsiveWidth(310,960);
-        float:left;
         font-size:em(17);
         line-height:2em;
+        float:left;
+
+        &#footer-address{
+        }
 
         &#footer-mail{
-            text-align:center;
+        }
+
+        &#footer-copyright{
+          text-align:center;
         }
 
         &#footer-phone{
