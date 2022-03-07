@@ -19,6 +19,6 @@
   "devDependencies": {
     "http-server": "^0.12.3",
     "lodash": "~4.17.21",
-    "node-sass": "^5.0.0"
+    "node-sass": "^7.0.0"
   }
 }
