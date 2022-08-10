@@ -7,7 +7,8 @@ Website of Mother on the Pea.
 To start a local web server hosting the website.
 
 ```bash
-npm start
+make install
+make serve
 ```
 
 ## Convert SASS files to CSS
