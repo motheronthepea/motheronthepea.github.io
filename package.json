@@ -17,7 +17,7 @@
   "license": "UNLICENSED",
   "homepage": "https://github.com/motheronthepea/motheronthepea.github.io/",
   "devDependencies": {
-    "http-server": "^0.12.3",
+    "http-server": "^14.1.1",
     "lodash": "~4.17.21",
     "node-sass": "^7.0.0"
   }
