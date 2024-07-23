@@ -1,0 +1,7 @@
+$TTL 86400
+@	IN SOA dns101.ovh.net. tech.ovh.net. (2020101800 86400 3600 3600000 300)
+  86400 IN NS     ns101.ovh.net.
+  86400 IN NS     dns101.ovh.net.
+  10800 IN A     213.186.33.5
+     60 IN TXT     "4|http://motheronthepea.be"
+www  10800 IN CNAME     motheronthepea.eu.

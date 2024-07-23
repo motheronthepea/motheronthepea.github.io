@@ -1,0 +1,17 @@
+$TTL 86400
+@	IN SOA dns101.ovh.net. tech.ovh.net. (2024072300 86400 3600 3600000 300)
+  86400 IN NS     ns101.ovh.net.
+  86400 IN NS     dns101.ovh.net.
+  28800 IN MX     1 aspmx.l.google.com.
+  28800 IN MX     10 aspmx3.googlemail.com.
+  28800 IN MX     10 aspmx2.googlemail.com.
+  28800 IN MX     5 alt1.aspmx.l.google.com.
+  28800 IN MX     5 alt2.aspmx.l.google.com.
+  10800 IN A     185.199.108.153
+  10800 IN A     185.199.109.153
+  10800 IN A     185.199.111.153
+  10800 IN A     185.199.110.153
+  10800 IN TXT     "google-site-verification=yRsQtTu_Gp0VBi39gdKVOM5-OPibMoVclrwu7z1x-Gk"
+   3600 IN TXT     "v=spf1 include:_spf.google.com ~all"
+google._domainkey   3600 IN TXT     "v=DKIM1; k=rsa; p=MIGfMA0GCSqGSIb3DQEBAQUAA4GNADCBiQKBgQDJMvPrNJG2koglBt7cpYIPpf5AfvVfkIbUAZnIhz3Gf1ufNqwLBlDdFusBXEj6wEfD4VG/Vgp+TNHj3O4Y9Ct8icVfr7I742sI26DNmt1FFHonxX1yMRzqXgm1j73dTv954Hg02UZdNvh6y2AtUYoYIYHPD8jcj21K6YlVft09QQIDAQAB"
+www  10800 IN CNAME     motheronthepea.github.io.
