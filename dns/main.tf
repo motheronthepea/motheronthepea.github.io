@@ -26,7 +26,7 @@ locals {
   ]
 
   spf   = "\"v=spf1 include:_spf.google.com ~all\""
-  dkim  = "v=DKIM1; k=rsa; p=MIGfMA0GCSqGSIb3DQEBAQUAA4GNADCBiQKBgQC1DQ5KWuaqjgm3guSmlKY2uUISnzxHUIi/RZYAE+92yF1Wg7Wkhzh3FpGMBPuJJbHg6brqs+1ebcguE5rx8XcAj5hcWwleLZwhjWZjVALPQM4ok+1crdeW0BAQQbuOBVomitervSIjYzkbPSKZHAanBM/+n9/bp2nzO5fvBNRPewIDAQAB"
+  dkim  = "v=DKIM1; k=rsa; p=MIGfMA0GCSqGSIb3DQEBAQUAA4GNADCBiQKBgQDJMvPrNJG2koglBt7cpYIPpf5AfvVfkIbUAZnIhz3Gf1ufNqwLBlDdFusBXEj6wEfD4VG/Vgp+TNHj3O4Y9Ct8icVfr7I742sI26DNmt1FFHonxX1yMRzqXgm1j73dTv954Hg02UZdNvh6y2AtUYoYIYHPD8jcj21K6YlVft09QQIDAQAB"
   dmarc = "v=DMARC1; p=none; rua=mailto:admin@wayofthinking.be"
 }
 
